@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 
 # Create your views here.
 from .models import Mobile
@@ -25,4 +25,4 @@ def home(request):
 #     return render(request, 'about.html')
 
 # def contact(request):
-#     return render(request, 'contact.html')
+#     return render(request, 'contact.html'
