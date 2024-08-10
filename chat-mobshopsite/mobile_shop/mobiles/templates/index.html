@@ -33,10 +33,10 @@
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#about-us">About us</a>
+              <a class="nav-link" href="/about">About us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="contact_us.html">Contact us</a>
+              <a class="nav-link" href="/contact">Contact us</a>
             </li>
           </ul>
           <form class="d-flex" role="search">
@@ -252,7 +252,7 @@
 
         console.log(firstName, lastName, email, product, enquiryMessage)
 
-        fetch('https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTY1MDYzMjA0MzY1MjZmNTUzMDUxMzMi_pc', {
+        fetch('https://connect.pabbly.com/workflow/sendwebhookdata/IjU3NjUwNTY0MDYzMzA0MzA1MjZmNTUzYzUxMzEi_pc', {
           method: 'POST',
           body: JSON.stringify(formData)
         }).then(res => res.json()).then(res => {
