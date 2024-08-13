@@ -1,11 +1,14 @@
-from django.shortcuts import render,redirect
-from django.http import HttpResponse
+from django.shortcuts import render,get_object_or_404,redirect
+from django.http import HttpResponse,JsonResponse
 from django.template import loader 
 from django.contrib import messages
+from django.core import serializers
+import json
+# from .models import Product
 
 
 # Create your views here.
-from .models import Mobile
+from .models import Product
 from .forms import EnquiryForm
 
 def home(request):
@@ -18,8 +21,8 @@ def about(request):
     return render(request,'about.html')
 
 
-#     mobiles = Mobile.objects.all()
-#     return render(request, 'mobiles_list.html', {'mobiles': mobiles})
+    # mobiles = Mobile.objects.all()
+    # return render(request, 'mobiles_list.html', {'mobiles': mobiles})
 def enquiry(request):
     if request.method == 'POST':
         form = EnquiryForm(request.POST)
@@ -45,22 +48,34 @@ def enquiry(request):
 def enquiry_success(request):
     return render(request, 'enquiry_success.html')
 
-    # if request.method == 'POST':
-    #    print(request.POST)
-    #    EnquiryFormData=EnquiryForm(request.POST)
-    #    if EnquiryFormData.is_valid():
-    #        print(EnquiryFormData.cleaned_data)
-    #        messages.success(request,'Thankyou ,we will get back shortly')
-           
-    #    else:
-    #        messages.error(request,'please correct the errors below.')
-    #    return render(request,'enquiry.html')
-    #         # Process form data
-    # else:
-    #    EnquiryFormRender=EnquiryForm()
-    # return render(request,'enquiry.html',{'form':EnquiryFormRender})
-# def about(request):
-#     return render(request, 'about.html')
+def productEnquiry(request):
+    if request.method=='POST':
+        print(request.POST)
+    return JsonResponse({'status':'success'})    
 
-# def contact(request):
-#     return render(request, 'contact.html'
+#   EnquiryFormData=EnquiryForm(request.POST)
+#         if EnquiryFormData.is_valid():
+#             print(EnquiryFormData.cleaned_data)
+#             messages.success(request,'thankyou for your enquiry.we will get back you shortly.')
+#             return render(request,'please correct the errors below.')
+# def products(request):
+#     products_from_db = product.objects.all()
+#     products_from_db=serializers.serialize('json',product.objects.all())
+#     # products_list = json.loads(products_from_db)
+#     # print(products_list)
+   
+
+#     # return JsonResponse(products_list,safe=False) 
+
+#     return JsonResponse(products_from_db, safe=False) 
+
+def products(request):
+    products_from_db = Product.objects.all()
+    products_from_db = serializers.serialize('json', products_from_db)
+    products_list = json.loads(products_from_db)  # Convert JSON string to list
+    return JsonResponse(products_list, safe=False)
+
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, pk=product_id)
+    return render(request, 'product-details.html', {'product': product})
+

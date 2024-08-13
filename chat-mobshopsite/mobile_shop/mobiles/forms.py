@@ -19,3 +19,10 @@ class EnquiryForm(forms.ModelForm):
     # email_address = forms.EmailField(label="email-address",max_length=100,required=True,widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your email address'}))
     # product=forms.CharField(label="products",max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter the product name'}))
     # enquiry_message=forms.CharField(label="Enquiry Message",widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter your message'}))
+
+    # first_name = forms.CharField(label="first_name",max_length=100,required=True,widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your first name'}))
+    # last_name = forms.CharField(label="last_name",max_length=100,required=True,widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your last name'}))
+    # mobile=forms.CharField(label="Mobile",max_length=10, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter your mobile number'}))
+    # email_address = forms.EmailField(label="email-address",max_length=100,required=True,widget=forms.EmailInput(attrs={'class': 'form-control', 'placeholder': 'Enter your email address'}))
+    # product=forms.CharField(label="products",max_length=100, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Enter the product name'}))
+    # enquiry_message=forms.CharField(label="Enquiry Message",widget=forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Enter your message'}))
